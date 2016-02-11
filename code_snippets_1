@@ -1,0 +1,922 @@
+PYTHON CODE SNIPPETS
+------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------
+
+"""
+Write a program which will find all such numbers which are divisible by 7 but are not a multiple of 5,
+between 2000 and 3200 (both included).
+The numbers obtained should be printed in a comma-separated sequence on a single line.
+"""
+
+numlist=[x for x in range(2000,3201) if x%7==0 and x%5!=0]
+
+for i in numlist:
+    print(i,end=",")
+    
+------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------
+"""
+Write a program which can compute the factorial of a given numbers.
+The results should be printed in a comma-separated sequence on a single line.
+Suppose the following input is supplied to the program:
+8
+Then, the output should be:
+40320
+
+"""
+
+def fact(x):
+    if x<1:
+        return 1
+    else:
+        z=x*fact(x-1)
+        return z
+
+a=fact(8)
+print(a)
+------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------
+
+"""
+With a given integral number n, write a program to generate a dictionary that contains (i, i*i) such that is an integral number between 1 and n (both included). and then the program should print the dictionary.
+Suppose the following input is supplied to the program:
+8
+Then, the output should be:
+{1: 1, 2: 4, 3: 9, 4: 16, 5: 25, 6: 36, 7: 49, 8: 64}
+
+"""
+
+def makedict(n):
+    a={i:i*i for i in range(1,n+1)}
+    return a
+
+b=makedict(8)
+print(b)
+
+------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------
+
+"""
+Define a class which has at least two methods:
+getString: to get a string from console input
+printString: to print the string in upper case.
+Also please include simple test function to test the class methods.
+
+"""
+
+class Prings:
+    def __init__(self):
+        self.str=""
+
+    def getString(self):
+        self.str=input("Enter the string")
+
+    def printString(self):
+        print(self.str.upper())
+
+p=Prings()
+p.getString()
+p.printString()
+------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------
+
+"""
+Write a program that calculates and prints the value according to the given formula:
+Q = Square root of [(2 * C * D)/H]
+Following are the fixed values of C and H:
+C is 50. H is 30.
+D is the variable whose values should be input to your program in a comma-separated sequence.
+Example
+Let us assume the following comma separated input sequence is given to the program:
+100,150,180
+The output of the program should be:
+18,22,24
+"""
+import math
+class Trsq:
+    def __init__(self,*D):
+        self.C=50
+        self.H=30
+        self.D=D
+
+    def calc(self):
+        Q=list()
+        for i in self.D:
+            i=float(i)
+            j=round((math.sqrt((2*self.C*i)/self.H)),ndigits=None)
+            Q.append(j)
+        print(Q)
+
+
+T=Trsq(100,150,180)
+T.calc()
+
+------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------
+
+"""
+Write a program which takes 2 digits, X,Y as input and generates a 2-dimensional array. The element value in the i-th row and j-th column of the array should be i*j.
+Note: i=0,1.., X-1; j=0,1,¡¬Y-1.
+Example
+Suppose the following inputs are given to the program:
+3,5
+Then, the output of the program should be:
+[[0, 0, 0, 0, 0], [0, 1, 2, 3, 4], [0, 2, 4, 6, 8]]
+"""
+
+z=input("Enter:")
+
+listdim=[int(x) for x in z.split(',')]
+
+rowNum=listdim[0]
+colNum=listdim[1]
+
+multilist=[[0 for col in range(colNum)] for row in range(rowNum)]
+print(multilist)
+for i in range(rowNum):
+    for j in range(colNum):
+        #print(i,j)
+        multilist[i][j]=i*j
+
+print(multilist)
+
+------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------
+
+"""
+Write a program that accepts a comma separated sequence of words as input and prints the words in a comma-separated sequence after sorting them alphabetically.
+Suppose the following input is supplied to the program:
+without,hello,bag,world
+Then, the output should be:
+bag,hello,without,world
+"""
+
+z=input("Enter:")
+
+liststr=[x for x in z.split(',')]
+
+liststr.sort()
+
+for i in liststr:
+    print(i,end=",")
+
+------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------
+
+"""
+Write a program that accepts a sequence of whitespace separated words as input and prints the words after removing all duplicate words and sorting them alphanumerically.
+Suppose the following input is supplied to the program:
+hello world and practice makes perfect and hello world again
+Then, the output should be:
+again and hello makes perfect practice world
+"""
+
+
+class sortwords:
+
+    def __init__(self):
+        self.str=""
+
+    def getinp(self):
+        A=list()
+        z=[i for i in input("Enter:").split()]
+        for word in z:
+            if word not in A:
+                A.append(word)
+                A.sort()
+        return A
+
+S=sortwords()
+T=S.getinp()
+for i in T:
+    print(i,end=" ")
+    
+------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------
+
+"""
+Write a program that accepts a sequence of whitespace separated words as input and prints the words after removing all duplicate words and sorting them alphanumerically.
+Suppose the following input is supplied to the program:
+hello world and practice makes perfect and hello world again
+Then, the output should be:
+again and hello makes perfect practice world
+"""
+
+
+class sortwords:
+
+    def __init__(self):
+        self.str=""
+
+    def getinp(self):
+        A=list()
+        z=[i for i in input("Enter:").split()]
+        A=" ".join(sorted((set(z))))
+        return A
+
+S=sortwords()
+T=S.getinp()
+print(T)
+
+------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------
+
+"""
+Write a program which accepts a sequence of comma separated 4 digit binary numbers as its input and then check whether
+they are divisible by 5 or not. The numbers that are divisible by 5 are to be printed in a comma separated sequence.
+Example:
+0100,0011,1010,1001
+Then the output should be:
+1010
+"""
+
+z=[i for i in input("Please enter the numbers").split(',')]
+print(z)
+for i in z:
+    intp=int(i,2)
+    if intp%5==0:
+        print(i)
+        
+------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------
+
+"""
+Write a program, which will find all such numbers between 1000 and 3000 (both included) such that each digit of the number is an even number.
+The numbers obtained should be printed in a comma-separated sequence on a single line.
+"""
+A=list()
+def chek():
+    for i in range(1000,3001):
+        zlist=[j for j in str(i) if int(j)%2==0]
+        if len(zlist)==4:
+            A.append(i)
+
+    return A
+
+
+B=chek()
+
+for i in B:
+    print(i,end=",")
+
+------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------
+
+"""
+Write a program that accepts a sentence and calculate the number of letters and digits.
+Suppose the following input is supplied to the program:
+hello world! 123
+Then, the output should be:
+LETTERS 10
+DIGITS 3
+"""
+import re
+
+z=input("Enter:")
+countletter=0
+countnum=0
+
+for i in z:
+    if i.isalpha():
+        countletter+=1
+    elif i.isdigit():
+        countnum+=1
+    else:
+        pass
+
+print("LETTERS ",countletter)
+print("DIGITS ",countnum)
+
+------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------
+
+"""
+A website requires the users to input username and password to register. Write a program to check the validity of password input by users.
+Following are the criteria for checking the password:
+1. At least 1 letter between [a-z]
+2. At least 1 number between [0-9]
+1. At least 1 letter between [A-Z]
+3. At least 1 character from [$#@]
+4. Minimum length of transaction password: 6
+5. Maximum length of transaction password: 12
+Your program should accept a sequence of comma separated passwords and will check them according to the above criteria.
+Passwords that match the criteria are to be printed, each separated by a comma.
+Example
+If the following passwords are given as input to the program:
+ABd1234@1,a F1#,2w3E*,2We3345
+Then, the output of the program should be:
+ABd1234@1
+"""
+
+import re
+
+passwords=[i for i in input().split(',')]
+A=list()
+for passw in passwords:
+    if len(passw)>=6 and len(passw)<=12:
+        if re.search('[a-z]+',passw):
+            if re.search('[A-Z]+',passw):
+                if re.search('[0-9]+',passw):
+                    if re.findall('[$#@]+',passw):
+                        if re.findall('[\s]+',passw):
+                            pass
+                        else:
+                            A.append(passw)
+
+print(A)
+
+------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------
+
+"""
+You are required to write a program to sort the (name, age, height) tuples by ascending order where name is string, age
+and height are numbers. The tuples are input by console. The sort criteria is:
+1: Sort based on name;
+2: Then sort based on age;
+3: Then sort by score.
+The priority is that name > age > score.
+If the following tuples are given as input to the program:
+Tom,19,80
+John,20,90
+Jony,17,91
+Jony,17,93
+Json,21,85
+Then, the output of the program should be:
+[('John', '20', '90'), ('Jony', '17', '91'), ('Jony', '17', '93'), ('Json', '21', '85'), ('Tom', '19', '80')]
+
+"""
+from operator import itemgetter
+B=list()
+C=list()
+while True:
+    z=input()
+    if z:
+        A=list()
+        for i in z.split():
+            A.append(i)
+        B=tuple(A)
+    else:
+        break;
+    C.append(B)
+
+Z=sorted(C,key=itemgetter(0,1,2))
+print(Z)
+
+------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------
+
+"""
+Define a class with a generator which can iterate the numbers, which are divisible by 7, between a given range 0 and n.
+
+"""
+class justclass:
+
+    def genclass(self,n):
+        for i in range(n):
+            if i%7==0:
+                yield i
+
+
+
+
+j=justclass()
+mynum=j.genclass(100)
+
+for i in mynum:
+    print(i,end=",")
+
+------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------
+
+GOOGLE CHALLENGE QUESTIONS:
+
+"""
+Sort on sum of letters(a=1,b=2..z=26) in the word and if the sum is same then sort lexicographically.
+"""
+import operator
+
+words=list()
+sum_word=list()
+final_names=list()
+
+def answer(names):
+    for word in names:
+        temp=list()
+        word=word.lower()
+        for letter in word:
+            if letter==" ":continue
+            sum_letter=ord(letter) - 96
+            temp.append(sum_letter)
+        d=sum(temp)
+        words.append(word)
+        sum_word.append(d)
+    bc=sorted(list(zip(words,sum_word)),key=operator.itemgetter(0),reverse=True)
+
+
+    for k,v in sorted(bc,key=operator.itemgetter(1),reverse=True):
+        final_names.append(k)
+        print(k,v)
+    return final_names
+
+
+
+h=answer(["bcdal","bcdcj","a l","cj"])
+#h=answer(["sumedha","tanay","shr eela","cca","caba"])
+print(h)
+------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------
+"""
+Solution for google challenge: check for unique access codes from a list of access codes: original and reverse words are considered same.
+"""
+def answer(x):
+    wordlist=list(set(x))
+    for word in wordlist:
+        word_rev=word[::-1]
+        if word_rev!=word_rev[::-1]:
+            if word_rev in wordlist:
+                wordlist.remove(word_rev)
+            else:
+                 pass
+    return len(wordlist)
+------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------
+
+"""
+solution for snippet problem-Google(Memory constraint)
+"""
+import re
+from itertools import product
+def answer(document, searchTerms):
+    word_list = list()
+    for search_word in searchTerms:
+        word_list.append([m.start() for m in re.finditer(search_word, document)])
+    word_mix = [sorted(mix) for mix in product(*word_list)]
+    best_mix = min(word_mix, key=lambda f: f[len(f)-1]-f[0])
+    word_range = best_mix[::len(best_mix)-1]
+    last_word = document[word_range[1]:].split()[0]
+    return document[word_range[0]:word_range[1]]+last_word
+------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------
+
+#Improved solution:
+import re
+from itertools import product
+
+def answer(document, searchTerms):
+    word_list = list()
+    abc=dict()
+    word_search=(searchword for searchword in searchTerms)
+    word_ind_count=([word,b.start()]for word in word_search for b in re.finditer(word,document))
+
+    for line in word_ind_count:
+        if line[0] in abc:
+            abc[line[0]].append(line[1])
+        else:
+            abc[line[0]] = [line[1]]
+
+    word_mix = (sorted(mix) for mix in product(*abc.values()))
+    best_mix = min(word_mix, key=lambda f: f[len(f)-1]-f[0])
+    word_range = best_mix[::len(best_mix)-1]
+    last_word = document[word_range[1]:].split()[0]
+    return document[word_range[0]:word_range[1]]+last_word
+------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------
+import re
+from itertools import product
+import timeit
+
+def answer(document, searchTerms):
+    word_list = list()
+    abc=dict()
+    carrom=list()
+    word_search=(searchword for searchword in searchTerms)
+    word_ind_count=([word,b.start()]for word in word_search for b in re.finditer(word,document))
+
+    for line in word_ind_count:
+        if line[0] in abc:
+            abc[line[0]].append(line[1])
+        else:
+            abc[line[0]] = [line[1]]
+
+    for j in abc.values():
+        word_list.append(j)
+
+    mixxy=(mix for mix in product(*word_list))
+    word_mix=(sorted(lot) for lot in mixxy)
+    tala_mix=((combirange,combirange[-1]-combirange[0]) for combirange in word_mix)
+    b=[j for j in tala_mix]
+    h=min(b,key = lambda x:x[1])
+    word_r=h[0]
+    word_range=word_r[::len(word_r)-1]
+    print(word_range)
+
+    last_word = document[word_range[1]:].split()[0]
+    return document[word_range[0]:word_range[1]]+last_word
+
+j=answer("sdg google program abc sdg google",["google","program","sdg"])
+print(j)
+
+------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------
+import re
+from itertools import product
+
+def answer(document, searchTerms):
+    word_list = list()
+    abc=dict()
+    word_search=(searchword for searchword in searchTerms)
+    word_ind_count=([word,b.start()]for word in word_search for b in re.finditer(word,document))
+
+    for line in word_ind_count:
+        if line[0] in abc:
+            abc[line[0]].append(line[1])
+        else:
+            abc[line[0]] = [line[1]]
+
+    mixxy=[([min(mix),max(mix)],max(mix)-min(mix)) for mix in product(*abc.values())]
+
+    h=min(mixxy,key = lambda x:x[1])
+    word_r=h[0]
+
+
+    last_word = document[word_r[1]:].split()[0]
+    return document[word_r[0]:word_r[1]]+last_word
+
+j=answer("sdg bhan google program abc google program",["google","program","sdg"])
+print(j)
+
+------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------
+
+#most optimum solution
+import re
+from itertools import product
+
+def answer(document, searchTerms):
+    abc=dict()
+    word_search=(searchword for searchword in searchTerms)
+    word_ind_count=[[word,b.start()]for word in word_search for b in re.finditer(word,document)]
+    for line in word_ind_count:
+        if line[0] in abc:
+            abc[line[0]].append(line[1])
+        else:
+            abc[line[0]] = [line[1]]
+
+    mixxy=[([min(mix),max(mix)],max(mix)-min(mix)) for mix in product(*abc.values())]
+
+    h=min(mixxy,key = lambda x:x[1])
+    word_r=h[0]
+    last_word = document[word_r[1]:].split()[0]
+    return document[word_r[0]:word_r[1]]+last_word
+
+j=answer("sdg bhan google program sdg google program",["google","program","sdg"])
+print(j)
+
+------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------
+
+
+Question: Code for generation of a very large data set as follows:
+Produce a python module which does the following: Create a tab-delimited file  containing 20 columns and a million rows with the following characteristics:
+
+1. Column 1 (labeled as col1 is the index column where the values are 1 to 1 million)
+
+2. The next 9 columns (2 to 10) are labelled col2_x ... col10_x where each contains random values and 'x' is the mean mentioned in the next sentence. Each column has random data generated from a gaussian distribution at different means and variances. Additionally, each of these columns have 10% nulls.
+
+3. Columns 11 to 19 are labelled as col11...col19, where each column has random strings selected from the English Dictionary. 10% nulls in this column as well.
+
+4. Column 20 has random dates selected between January 1, 2014 to December 31, 2014. No nulls in this column.
+
+
+# Code written in Python 3.5
+"""
+Modules:
+1)random: Implements pseudo-random number generator.
+2)requests: Helps in integration with web services
+3)datetime: Manipulating dates
+4)csv: Read and write tabular data in CSV format
+"""
+import random
+from datetime import date
+import csv
+import requests
+
+
+class Adi:
+    """
+    This class has methods to:
+    1)Build columns
+    2)Generate an index
+    3)Generate gaussian distribution
+    4)Generate random words(English Dictionary)
+    5)Write as a tab delimited file
+
+    """
+
+    def __init__(self, num_of_elements, norm_columns, str_columns):
+        """
+        Initializing variables for:
+        1) Total no. of data points
+        2) Total no. of columns having gaussian distribution of random numbers
+        3) Total no. of columns having random English dictionary strings
+
+        """
+        self.total_records = num_of_elements+1
+        self.gauss_cols = norm_columns
+        self.char_cols = str_columns
+        self.gauss_cols_list = self.generate_columns(norm_columns)
+        self.char_cols_list = self.generate_columns(str_columns)
+        self.website = 'http://svnweb.freebsd.org/csrg/share/dict/words' \
+                       '?view=co&content-type=text/plain'
+
+    @classmethod
+    def generate_columns(cls, num_of_cols):
+        """
+        Used for generating col2 to col10 and col11 to col19
+        num_of_cols: The number of lists created within a list(used as columns)
+        Returns empty list of lists(creates structure)
+
+        """
+        cols = [[] for _ in range(num_of_cols)]
+        return cols
+
+    def generate_sequence(self):
+        """
+        Generates the index column(col1)
+
+        """
+        col = [idx for idx in range(1, self.total_records)]
+        col.insert(0, "col1")
+        return col
+
+    def generate_norm(self):
+        """
+        Generates random dataset with a normal distribution at different means.
+        It has 10% null values
+
+        """
+        mean_header = []
+
+        for i in range(self.gauss_cols):
+
+            random.seed(i)
+            mean = random.randint(i, i+10)
+            std = random.randint(i, i+5)
+
+            for j in range(1, self.total_records):
+                if j <= int(0.9*self.total_records):
+                    norm = random.gauss(mean, std)
+                    self.gauss_cols_list[i].append(norm)
+                else:
+                    self.gauss_cols_list[i].append('')
+
+            without_null = [item for item in
+                            self.gauss_cols_list[i] if item != '']
+
+            try:
+                mean_value = sum(without_null)/len(self.gauss_cols_list[i])
+                mean_header.append(mean_value)
+            except ZeroDivisionError:
+                mean_header.append('ERROR')
+                print('Division by zero. Appending column '+str(i+2) +
+                      ' with ERROR. Please check inputs')
+
+            self.gauss_cols_list[i].insert(0, ("col" +
+                                               str(i+2) +
+                                               "_" +
+                                               str(mean_header[i])))
+
+        return self.gauss_cols_list
+
+    def generate_string(self):
+        """
+        Generates random words extracted from the website.
+
+        """
+        web_open = requests.get(self.website)
+        wordlist = web_open.content.split()
+
+        for i in range(self.char_cols):
+            for j in range(1, self.total_records):
+                if j <= int(0.9*self.total_records):
+                    self.char_cols_list[i].append(random.choice(wordlist))
+
+                else:
+                    self.char_cols_list[i].append('')
+
+            self.char_cols_list[i].insert(0, "col" + str(i+2+self.gauss_cols))
+
+        return self.char_cols_list
+
+    def generate_date(self):
+        """
+        Generates random dates between January 1,2014 and December 31,2014
+
+        """
+        col = []
+        start_date = date(day=1, month=1, year=2014).toordinal()
+        end_date = date(day=31, month=12, year=2014).toordinal()
+        for _ in range(self.total_records):
+            random_day = date.fromordinal(random.randint(start_date, end_date))
+            col.append(str(random_day))
+
+        col.insert(0, "col"+str(self.char_cols+self.gauss_cols+2))
+
+        return col
+
+    def write_csv(self):
+        """
+        This function writes the data to a tab delimited file
+
+        """
+        url = "C:\\Users\\Tanay\\Documents\\Interview\\ayasdi_assignment.csv"
+        with open(url, "w", newline='') as handle_open:
+            writer = csv.writer(handle_open, delimiter='\t')
+            for i in range(self.total_records):
+                writer.writerow([x[i] for x in LIST_FINAL])
+
+
+TOTAL_INPUT = input("Enter the no. of records to generate: ")
+NORM_INPUT = input("Enter the no. of columns having gaussian distribution: ")
+STR_INPUT = input("Enter the no. of columns with random English words: ")
+
+# Creating object of the class with the above parameter
+# Exceptions handle invalid inputs
+
+try:
+    AYA = Adi(int(TOTAL_INPUT), int(NORM_INPUT), int(STR_INPUT))
+except ValueError:
+    print("Please enter an appropriate number")
+
+# Generating different columns of the data set
+
+COL_1 = [AYA.generate_sequence()]
+COL_2 = AYA.generate_norm()
+COL_3 = AYA.generate_string()
+COL_4 = [AYA.generate_date()]
+
+# Combining the columns into a single data set
+
+LIST_FINAL = COL_1 + COL_2 + COL_3 + COL_4
+
+# Writing the data set to disk as tab separated file.
+
+AYA.write_csv()
+
+------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------
+ 
+'''
+Checking for proper closure of brackets.
+'''
+
+from pythonds.basic.stack import Stack
+
+def parChecker(sym):
+    s=Stack()
+    balanced=True
+    index=0
+    while index<len(sym) and balanced:
+        sy=sym[index]
+
+        if sy in '([{':
+            s.push(sy)
+        else:
+            if s.isEmpty():
+                balanced=False
+            else:
+                top=s.pop()
+                if not matches(top,sy):
+                    balanced=False
+
+        index=index+1
+
+    if balanced and s.isEmpty():
+        return True
+    else:
+        return False
+
+def matches(open,close):
+    opens="([{"
+    closes=")]}"
+    return opens.index(open)==closes.index(close)
+
+
+print(parChecker('[]({)}'))
+
+------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------
+
+"""
+Division by choice of base: Used base 2 in the test case
+"""
+from pythonds.basic.stack import Stack
+
+def divby2(dec,base):
+    sta=Stack()
+    digits='0123456789ABCDEF'
+
+    while dec>0:
+        dec_rem=dec%base
+        sta.push(dec_rem)
+        dec=dec//base
+
+    stri=""
+    while not sta.isEmpty():
+        stri=stri+str(digits[sta.pop()])
+
+    return stri
+
+print(divby2(26,2))
+
+------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------
+
+"""
+Infix to Postfix implementation
+"""
+
+from pythonds.basic.stack import Stack
+
+def infixToPostfix(infixexpr):
+    prec = {}
+    prec["*"] = 3
+    prec["/"] = 3
+    prec["+"] = 2
+    prec["-"] = 2
+    prec["("] = 1
+    opStack = Stack()
+    postfixList = []
+    tokenList = infixexpr.split()
+
+    for token in tokenList:
+        if token in "ABCDEFGHIJKLMNOPQRSTUVWXYZ" or token in "0123456789":
+            postfixList.append(token)
+        elif token == '(':
+            opStack.push(token)
+        elif token == ')':
+            topToken = opStack.pop()
+            while topToken != '(':
+                postfixList.append(topToken)
+                topToken = opStack.pop()
+        else:
+            while (not opStack.isEmpty()) and \
+               (prec[opStack.peek()] >= prec[token]):
+                  postfixList.append(opStack.pop())
+            opStack.push(token)
+
+    while not opStack.isEmpty():
+        postfixList.append(opStack.pop())
+    return " ".join(postfixList)
+
+print(infixToPostfix("A * B + C * D"))
+print(infixToPostfix("( A + B ) * C - ( D - E ) * ( F + G )"))
+------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------
+
+"""
+Remove Punctuations
+"""
+import string
+def rempun(word):
+    punc=set(string.punctuation)
+    word1=''.join(x for x in word if x not in punc)
+    word2=word1.replace(' ','')
+    return word2
+
+print(rempun("'Ta sdf;'''&$%'="))
+
+------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------
+
+"""
+Check if the sentence is a palindrome irrespective of any dirty characters(punctuations)
+"""
+import string
+def revstr(strev):
+    if len(strev)<=1:
+        return strev
+    else:
+         return strev[len(strev)-1]+revstr(strev[0:len(strev)-1])
+
+
+def rempun(word):
+    punc=set(string.punctuation)
+    word1=''.join(x for x in word if x not in punc)
+    word2=word1.replace(' ','')
+    return word2
+
+def ispal(strp):
+    strpal=rempun(strp)
+    if len(strpal)<=1:
+        return True
+    elif strpal[0]==strpal[len(strpal)-1] and ispal(strpal[1:len(strpal)-1]):
+        return True
+    else:
+        return False
+
+
+print(ispal('go hang a salami; i%^*&(*)*@#$(&(*m a lasagna hog'))
+
+------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------
